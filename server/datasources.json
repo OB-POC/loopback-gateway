@@ -1,0 +1,23 @@
+{
+  "authService": {
+    "name": "authService",
+    "baseURL": "http://localhost:3000/authService",
+    "crud": true,
+    "connector": "rest",
+    "operations":[
+      {
+        "functions":{
+          "login":["username","password"]
+        },
+        "template":{
+          "method":"POST",
+          "url":"http://localhost:3000/authService/login",
+          "form": {
+            "username": "{username:string}",
+            "password": "{password:string}"
+          }
+        }
+      }
+    ]
+  }
+}
