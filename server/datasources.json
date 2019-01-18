@@ -4,20 +4,38 @@
     "baseURL": "http://localhost:3000/authService",
     "crud": true,
     "connector": "rest",
-    "operations":[
-      {
-        "functions":{
-          "login":["username","password"]
-        },
-        "template":{
-          "method":"POST",
-          "url":"http://localhost:3000/authService/login",
-          "form": {
-            "username": "{username:string}",
-            "password": "{password:string}"
-          }
+    "operations": [{
+      "functions": {
+        "login": ["username", "password"]
+      },
+      "template": {
+        "method": "POST",
+        "url": "http://localhost:3000/authService/login",
+        "form": {
+          "username": "{username:string}",
+          "password": "{password:string}"
         }
       }
-    ]
+    }]
+  },
+  "offeringsService": {
+    "name": "offeringsService",
+    "baseURL": "http://localhost:3003",
+    "crud": false,
+    "connector": "rest",
+    "operations": [{
+      "functions": {
+        "cardBasedOfferings": ["token"]
+      },
+      "template": {
+        "method": "GET",
+        "url": "http://localhost:3003/offeringService/cardDetails",
+        "headers": {
+          "x-access-token": "{token}",
+          "accepts": "application/json",
+          "content-type": "application/json"
+        }
+      }
+    }]
   }
 }
