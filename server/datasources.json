@@ -36,6 +36,19 @@
           "content-type": "application/json"
         }
       }
+    }, {
+      "functions": {
+        "advisory": ["token"]
+      },
+      "template": {
+        "method": "GET",
+        "url": "http://localhost:3003/offeringService/advisory",
+        "headers": {
+          "x-access-token": "{token}",
+          "accepts": "application/json",
+          "content-type": "application/json"
+        }
+      }
     }]
   }
 }
