@@ -24,5 +24,9 @@
   "account": {
     "dataSource": "accountsService",
     "public": true
+  },
+  "payout": {
+    "dataSource": "payoutPlanService",
+    "public": true
   }
 }
