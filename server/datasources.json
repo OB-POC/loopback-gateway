@@ -4,51 +4,113 @@
     "baseURL": "http://localhost:3000/authService",
     "crud": true,
     "connector": "rest",
-    "operations": [{
-      "functions": {
-        "login": ["username", "password"]
-      },
-      "template": {
-        "method": "POST",
-        "url": "http://localhost:3000/authService/login",
-        "form": {
-          "username": "{username:string}",
-          "password": "{password:string}"
+    "operations": [
+      {
+        "functions": {
+          "login": [
+            "username",
+            "password"
+          ]
+        },
+        "template": {
+          "method": "POST",
+          "url": "http://localhost:3000/authService/login",
+          "form": {
+            "username": "{username:string}",
+            "password": "{password:string}"
+          }
         }
       }
-    }]
+    ]
   },
   "offeringsService": {
     "name": "offeringsService",
     "baseURL": "http://localhost:3003",
     "crud": false,
     "connector": "rest",
-    "operations": [{
-      "functions": {
-        "cardBasedOfferings": ["token"]
+    "operations": [
+      {
+        "functions": {
+          "cardBasedOfferings": [
+            "token"
+          ]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:3003/offeringService/cardDetails",
+          "headers": {
+            "x-access-token": "{token}",
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        }
       },
-      "template": {
-        "method": "GET",
-        "url": "http://localhost:3003/offeringService/cardDetails",
-        "headers": {
-          "x-access-token": "{token}",
-          "accepts": "application/json",
-          "content-type": "application/json"
+      {
+        "functions": {
+          "advisory": [
+            "token"
+          ]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:3003/offeringService/advisory",
+          "headers": {
+            "x-access-token": "{token}",
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
         }
       }
-    }, {
-      "functions": {
-        "advisory": ["token"]
+    ]
+  },
+  "accountsService": {
+    "name": "accountsService",
+    "baseURL": "http://localhost:3001/accountsService",
+    "crud": true,
+    "connector": "rest",
+    "operations": [
+      {
+        "functions": {
+          "credit": ["token"]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:3001/accountsService/credit",
+          "headers": {
+            "x-access-token": "{token}",
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        }
       },
-      "template": {
-        "method": "GET",
-        "url": "http://localhost:3003/offeringService/advisory",
-        "headers": {
-          "x-access-token": "{token}",
-          "accepts": "application/json",
-          "content-type": "application/json"
+      {
+        "functions": {
+          "debit": ["token"]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:3001/accountsService/debit",
+          "headers": {
+            "x-access-token": "{token}",
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        }
+      },
+      {
+        "functions": {
+          "totalBalances": ["token"]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:3001/accountsService/totalBalances",
+          "headers": {
+            "x-access-token": "{token}",
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
         }
       }
-    }]
+    ]
   }
 }
